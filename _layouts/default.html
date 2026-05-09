@@ -11,5 +11,26 @@
     <main>
       {{ content }}
     </main>
+
+    <script>
+      document.addEventListener('DOMContentLoaded', () => {
+        const titles = document.querySelectorAll('.site-title');
+        titles.forEach(title => {
+          const text = title.textContent;
+          title.innerHTML = text.split('').map(char => {
+            if (char === ' ') return char;
+            return `<span>${char}</span>`;
+          }).join('');
+          
+          setInterval(() => {
+            title.querySelectorAll('span').forEach(span => {
+              const hue = Math.floor(Math.random() * 360);
+              span.style.color = `hsl(${hue}, 80%, 50%)`;
+              span.style.transition = 'color 0.3s ease';
+            });
+          }, 400);
+        });
+      });
+    </script>
   </body>
 </html>
