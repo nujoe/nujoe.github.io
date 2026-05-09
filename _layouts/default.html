@@ -1,36 +1,40 @@
 <!doctype html>
 <html lang="ko">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>{% if page.title and page.title != 'home' %}{{ page.title | escape }} - {% endif %}{{ site.title | escape }}</title>
-    <meta name="description" content="{{ site.description | escape }}">
-    <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}">
-  </head>
-  <body>
-    <main>
-      {{ content }}
-    </main>
 
-    <script>
-      document.addEventListener('DOMContentLoaded', () => {
-        const titles = document.querySelectorAll('.site-title');
-        titles.forEach(title => {
-          const text = title.textContent;
-          title.innerHTML = text.split('').map(char => {
-            if (char === ' ') return char;
-            return `<span>${char}</span>`;
-          }).join('');
-          
-          setInterval(() => {
-            title.querySelectorAll('span').forEach(span => {
-              const hue = Math.floor(Math.random() * 360);
-              span.style.color = `hsl(${hue}, 80%, 50%)`;
-              span.style.transition = 'color 0.3s ease';
-            });
-          }, 400);
-        });
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{% if page.title and page.title != 'home' %}{{ page.title | escape }} - {% endif %}{{ site.title | escape }}
+  </title>
+  <meta name="description" content="{{ site.description | escape }}">
+  <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}">
+</head>
+
+<body>
+  <main>
+    {{ content }}
+  </main>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const titles = document.querySelectorAll('h1');
+      titles.forEach(title => {
+        const text = title.textContent;
+        title.innerHTML = text.split('').map(char => {
+          if (char === ' ') return char;
+          return `<span>${char}</span>`;
+        }).join('');
+
+        setInterval(() => {
+          title.querySelectorAll('span').forEach(span => {
+            const hue = Math.floor(Math.random() * 360);
+            span.style.color = `hsl(${hue}, 80%, 50%)`;
+            span.style.transition = 'color 0.3s ease';
+          });
+        }, 400);
       });
-    </script>
-  </body>
+    });
+  </script>
+</body>
+
 </html>

@@ -8,12 +8,12 @@ layout: default
   <header>
     <h1>{{ page.title | escape }}</h1>
     <p class="post-meta">
-      <time datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: "%Y-%m-%d" }}</time>
       {% if page.author %}
-        <span>{{ page.author | escape }}</span>
+      <span>{{ page.author | escape }}</span>
       {% elsif site.author %}
-        <span>{{ site.author | escape }}</span>
+      <span>{{ site.author | escape }}</span>
       {% endif %}
+      <time datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: "%Y-%m-%d" }}</time>
     </p>
   </header>
 
